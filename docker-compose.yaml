@@ -1,0 +1,25 @@
+version: '3.4'
+
+services:
+  backup:
+    build: .
+    env_file:
+      .env
+    links:
+      - mysql
+    volumes:
+      - ./svc_account.json:/run/secrets/svc_account.json
+  mysql:
+    image: mariadb
+    env_file:
+      .env
+    volumes:
+      - ./testwp.sql:/docker-entrypoint-initdb.d/backup.sql
+  mongo:
+    image: mongo:4.4
+    env_file:
+      .env
+    volumes:
+      - ./mongo.dump.gz:/dump/mongo.dump.gz
+      - ./mongo-restore.sh:/docker-entrypoint-initdb.d/mongo-restore.sh
+

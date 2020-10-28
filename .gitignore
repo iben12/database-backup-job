@@ -1,0 +1,6 @@
+.env
+.deploy/secrets.yaml
+mongo.dump.gz
+flytm.sql
+svc_account.json
+testwp.sql
