@@ -4,6 +4,6 @@ set -e
 
 gcloud-auth
 
-mysql-backup
+# mysql-backup
 
 mongo-backup
