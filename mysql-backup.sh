@@ -6,6 +6,7 @@ echo "Backing up MYSQL data"
 
 if [ ! -z "$MYSQL_DATABASES" ];then 
   mysqldump -h $MYSQL_HOST -u $MYSQL_USER -p$MYSQL_PASSWORD --single-transaction --databases $MYSQL_DATABASES > db.sql
+  mysql -h $MYSQL_HOST -u $MYSQL_USER -p$MYSQL_PASSWORD --execute="FLUSH PRIVILEGES;"
   mysqldump -h $MYSQL_HOST -u $MYSQL_USER -p$MYSQL_PASSWORD --system=users > users.sql
 fi
 
